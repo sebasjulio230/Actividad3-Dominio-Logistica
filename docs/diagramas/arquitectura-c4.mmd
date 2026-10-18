@@ -1,0 +1,29 @@
+
+flowchart TB
+    Operador["Persona: Operador logístico"]
+
+    subgraph Plataforma["Sistema: Plataforma logística de última milla"]
+        subgraph Aplicacion["Contenedor lógico: Aplicación de asignación"]
+            CasoUso["AssignCourierUseCase"]
+            Contratos["Contratos y puertos"]
+        end
+
+        subgraph Dominio["Modelo de dominio"]
+            Delivery["Entidad Delivery"]
+            ValueObjects["DeliveryId y DeliveryAddress"]
+        end
+    end
+
+    subgraph SistemasExternos["Sistemas externos propuestos"]
+        Persistencia[("Almacenamiento de entregas")]
+        Disponibilidad["Servicio de disponibilidad"]
+        Publicacion["Sistema de registro o publicación"]
+    end
+
+    Operador -->|"Solicita una asignación"| CasoUso
+    CasoUso -->|"Aplica las reglas"| Delivery
+    Delivery --> ValueObjects
+    CasoUso -->|"Utiliza"| Contratos
+    Contratos -.->|"Implementación mediante adaptador"| Persistencia
+    Contratos -.->|"Implementación mediante adaptador"| Disponibilidad
+    Contratos -.->|"Implementación mediante adaptador"| Publicacion

@@ -1,0 +1,32 @@
+
+classDiagram
+    class Delivery {
+        +DeliveryId Id
+        +DeliveryAddress Address
+        +CourierId CourierId
+        +AssignCourier(courierId)
+    }
+
+    class Courier {
+        +CourierId Id
+        +ConsultarDisponibilidad()
+    }
+
+    class DeliveryId {
+        +Guid Value
+    }
+
+    class DeliveryAddress {
+        +string Value
+    }
+
+    class CourierId {
+        +Guid Value
+    }
+
+    Delivery --> DeliveryId : se identifica mediante
+    Delivery --> DeliveryAddress : tiene destino
+    Delivery "0..*" --> "0..1" Courier : asignación
+
+    note for Delivery "Protege la regla de una única asignación activa"
+    note for Courier "La disponibilidad se consulta mediante un puerto"

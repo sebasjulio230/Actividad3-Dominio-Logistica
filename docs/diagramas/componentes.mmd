@@ -1,0 +1,42 @@
+
+flowchart TD
+    Operador["Operador logístico"]
+
+    subgraph Aplicacion["Capa de aplicación"]
+        CasoUso["AssignCourierUseCase"]
+        PuertoRepo["IDeliveryRepository"]
+        PuertoDisponibilidad["ICourierAvailability"]
+        PuertoResultado["IAssignmentResultPublisher"]
+    end
+
+    subgraph Dominio["Capa de dominio"]
+        Entrega["Delivery"]
+        IdEntrega["DeliveryId"]
+        Direccion["DeliveryAddress"]
+    end
+
+    subgraph Infraestructura["Capa de infraestructura"]
+        RepoAdapter["DeliveryRepositoryAdapter"]
+        DisponibilidadAdapter["CourierAvailabilityAdapter"]
+        ResultadoAdapter["AssignmentResultPublisherAdapter"]
+        BaseDatos[("Almacenamiento de entregas")]
+        ServicioDisponibilidad["Servicio de disponibilidad"]
+        Registro["Sistema de registro o publicación"]
+    end
+
+    Operador --> CasoUso
+    CasoUso --> Entrega
+    CasoUso --> PuertoRepo
+    CasoUso --> PuertoDisponibilidad
+    CasoUso --> PuertoResultado
+
+    Entrega --> IdEntrega
+    Entrega --> Direccion
+
+    RepoAdapter -. "implementa" .-> PuertoRepo
+    DisponibilidadAdapter -. "implementa" .-> PuertoDisponibilidad
+    ResultadoAdapter -. "implementa" .-> PuertoResultado
+
+    RepoAdapter --> BaseDatos
+    DisponibilidadAdapter --> ServicioDisponibilidad
+    ResultadoAdapter --> Registro
