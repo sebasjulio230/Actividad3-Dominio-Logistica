@@ -139,3 +139,19 @@ Durante la Actividad 4 se espera:
 El proyecto proporciona una propuesta documentada del modelo de dominio y de la arquitectura del flujo de asignación de repartidores.
 
 Su finalidad es facilitar la construcción y validación posterior de la solución, manteniendo claras las reglas del negocio, las responsabilidades de los componentes y las decisiones arquitectónicas.
+
+## Documentación del proyecto
+
+El proyecto contiene el diseño del dominio de una plataforma logística de última milla, enfocado en el proceso de asignación de repartidores a entregas.
+
+### Documentos
+
+- `docs/modelo-dominio.md`: entidades, objetos de valor e invariantes del dominio.
+- `docs/lenguaje-ubicuo.md`: términos y conceptos del negocio.
+- `docs/escenarios-aceptacion.md`: escenarios de aceptación de las reglas del dominio.
+- `docs/casos-de-uso.md`: casos de uso del sistema.
+- `docs/contratos-y-puertos.md`: contratos y puertos de comunicación.
+- `docs/Architecture.md`: descripción de la arquitectura.
+- `docs/diagramas/`: diagramas del modelo de entidades, componentes y arquitectura C4.
+- `docs/adr/`: registros de decisiones de arquitectura.
+- `evidencias/`: imágenes de los diagramas del proyecto.
